@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :login_required, only: %i[new create edit update]
+  skip_before_action :login_required, only: %i[ new create edit update ]
   def new
     @user = User.new
   end
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
   end
 
   private
