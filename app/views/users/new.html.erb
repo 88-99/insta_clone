@@ -14,6 +14,12 @@
   <%= f.text_field :name %>
   <%= f.label :email %>
   <%= f.email_field :email %>
+
+  <%= f.label :profile_picture %>
+  <%= image_tag(@user.profile_picture.url) if @user.profile_picture && @user.profile_picture.url %>
+  <%= f.file_field :profile_picture %>
+  <%= f.hidden_field :profile_picture_cashe %>
+
   <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.label :password_confirmation %>
