@@ -1,8 +1,2 @@
-<%= form_with(model: @user, local: true) do |f| %>
-<div class="field">
-  <% if @user.profile_picture && @user.profile_picture.url %>
-    <%= image_tag @user.profile_picture.url %>
-  <% end %>
-  <%= f.label :profile_picture %>
-  <%= f.file_field :profile_picture %>
-</div>
+<h2>プロフィール編集</h2>
+<%= render 'form' %>
