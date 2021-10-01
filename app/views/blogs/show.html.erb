@@ -1,10 +1,10 @@
 <p>
   <strong>User:</strong>
-  <%= @blog.user %>
+  <%= @blog.user.name %>
 </p>
 <p>
   <strong>Image:</strong>
-  <%= image_tag @blog.image.url %>
+  <%= image_tag @blog.image.url, class: "img" %>
 </p>
 <p>
   <strong>Content:</strong>
@@ -17,7 +17,5 @@
     <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-<% if @user.id == @current_user.id %>
-  <%= link_to 'Edit', edit_blog_path(@blog) %>
-<% end %>
+<%= link_to 'Edit', edit_blog_path(@blog) %>
 <%= link_to 'Back', blogs_path %>

@@ -1,6 +1,6 @@
 <h1><%= @user.name %>のページ</h1>
 <div class="field">
-  <%= image_tag @user.profile_picture.url %>
+  <%= image_tag @user.profile_picture.url, class: "profile_img" %>
 </div>
 <p>メールアドレス: <%= @user.email %></p>
 <%= link_to '編集する', edit_user_path(@user.id) %>

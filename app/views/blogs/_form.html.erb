@@ -10,7 +10,9 @@
     </div>
   <% end %>
   <div class="field">
-    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+    <% if @blog.image && @blog.image.url %>
+      <%= image_tag @blog.image.url, class: "img" %>
+    <% end %>
     <%= form.label :image %>
     <%= form.file_field :image %>
   </div>

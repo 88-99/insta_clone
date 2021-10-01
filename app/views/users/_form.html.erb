@@ -15,7 +15,9 @@
   <%= f.email_field :email %>
 
   <%= f.label :profile_picture %>
-  <%= image_tag(@user.profile_picture.url) if @user.profile_picture && @user.profile_picture.url %>
+  <% if @user.profile_picture && @user.profile_picture.url %>
+    <%= image_tag @user.profile_picture.url, class: profile_img %>
+  <% end %>
   <%= f.file_field :profile_picture %>
   <%= f.hidden_field :profile_picture_cashe %>
 
