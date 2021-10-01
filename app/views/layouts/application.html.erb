@@ -9,17 +9,25 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% if logged_in? %>
-      <%= link_to "Home", blogs_path %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <%= yield %>
+    <div class="container">
+      <header class="header">
+        <% if logged_in? %>
+          <%= link_to "Home", blogs_path %>
+          <%= link_to "Profile", user_path(current_user.id) %>
+          <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+        <% else %>
+          <%= link_to "Sign up", new_user_path %>
+          <%= link_to "Login", new_session_path %>
+        <% end %>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key}") %>
+        <% end %>
+      </header>
+      <%= yield %>
+      <footer>
+        <p>運営会社DIVE INTO CODE株式会社</p>
+        <p>© 2015-2016 DIVE INTO CODE Corp.</p>
+      </footer>
+    </div>
   </body>
 </html>

@@ -12,7 +12,7 @@
     <% @blogs.each do |blog| %>
       <tr>
         <td><%= link_to blog.user.name, user_path(blog.user) %></td>
-        <td><%= image_tag blog.image.url %></td>
+        <td><%= image_tag blog.image.url, class:'index_image' %></td>
         <td><%= blog.content.truncate(20) %></td>
         <td><%= link_to '詳細を見る', blog_path(blog.id) %></td>
         <td><%= link_to '編集する', edit_blog_path(blog) %></td>
