@@ -1,7 +1,7 @@
 <h3>以下の内容で送信する</h3>
 <%= form_with(model: @blog, local: true) do |form| %>
   <% if @blog.image && @blog.image.url %>
-    <%= image_tag(@blog.image.url) %>
+    <%= image_tag @blog.image.url, class: "img" %>
   <% end %>
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
