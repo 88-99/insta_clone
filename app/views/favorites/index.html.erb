@@ -1,0 +1,23 @@
+<h1>お気に入り</h1>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Image</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= link_to favorite.user.name, user_path(favorite.user) %></td>
+        <td><%= image_tag favorite.blog.image.url, class:'index_image' %></td>
+        <td><%= favorite.blog.content.truncate(20) %></td>
+        <td><%= link_to '詳細を見る', blog_path(favorite.id) %></td>
+        <td><%= link_to '編集する', edit_blog_path(favorite) %></td>
+        <td><%= link_to '削除する', favorite, method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

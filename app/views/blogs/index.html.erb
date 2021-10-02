@@ -15,11 +15,14 @@
         <td><%= image_tag blog.image.url, class:'index_image' %></td>
         <td><%= blog.content.truncate(20) %></td>
         <td><%= link_to '詳細を見る', blog_path(blog.id) %></td>
+        <% if blog.user.id==@current_user.id %>
         <td><%= link_to '編集する', edit_blog_path(blog) %></td>
         <td><%= link_to '削除する', blog, method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 <%= link_to '新しく投稿する', new_blog_path %>
+<%= link_to 'お気に入り', favorites_path %>
