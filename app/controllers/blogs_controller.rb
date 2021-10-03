@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
   before_action :ensure_correct_user, only: %i[ edit update destroy ]
+  before_action :require_login
 
   def index
     @blogs = Blog.all
@@ -65,5 +66,9 @@ class BlogsController < ApplicationController
     if blog.user_id != current_user.id
       redirect_to blogs_path, notice: "権限がありません"
     end
+  end
+
+  def require_login
+    redirect_to new_session_path unless logged_in?
   end
 end
