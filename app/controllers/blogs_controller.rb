@@ -58,10 +58,4 @@ class BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(:content, :image, :image_cache, :user_id)
   end
-
-  def ensure_correct_user
-    if @current_user.id != params[:id].to_i
-      redirect_to("/posts/index")
-    end
-  end
 end
