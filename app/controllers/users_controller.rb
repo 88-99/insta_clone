@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: %i[ new create edit update ]
+  before_action :ensure_correct_user, only: %i[ edit update ]
   def new
     @user = User.new
   end
@@ -34,5 +35,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation, :profile_picture, :image_cashe, :user_id)
+  end
+
+  def ensure_correct_user
+    user = User.find(params[:id])
+    if user.id != current_user.id
+      redirect_to blogs_path, notice: "権限がありません"
+    end
   end
 end

@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
+  before_action :ensure_correct_user, only: %i[ edit update destroy ]
 
   def index
     @blogs = Blog.all
@@ -57,5 +58,12 @@ class BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(:content, :image, :image_cache, :user_id)
+  end
+
+  def ensure_correct_user
+    blog = Blog.find(params[:id])
+    if blog.user_id != current_user.id
+      redirect_to blogs_path, notice: "権限がありません"
+    end
   end
 end

@@ -14,7 +14,7 @@
         <td><%= link_to favorite.user.name, user_path(favorite.user) %></td>
         <td><%= image_tag favorite.blog.image.url, class:'index_image' %></td>
         <td><%= favorite.blog.content.truncate(20) %></td>
-        <td><%= link_to '詳細を見る', blog_path(favorite.id) %></td>
+        <td><%= link_to '詳細を見る', blog_path(favorite.blog) %></td>
       </tr>
     <% end %>
   </tbody>
