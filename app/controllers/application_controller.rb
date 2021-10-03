@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   before_action :login_required
-  before_action :ensure_correct_user, only: %i[ edit update ]
+  before_action :ensure_correct_user, only: %i[ edit update destroy ]
 
   private
   def login_required
@@ -15,9 +15,4 @@ class ApplicationController < ActionController::Base
       redirect_to blogs_path, notice: "権限がありません"
     end
   end
-  # def ensure_correct_user
-  #   if @current_user.id != params[:id].to_i
-  #     redirect_to blogs_path, notice: "権限がありません"
-  #   end
-  # end
 end
