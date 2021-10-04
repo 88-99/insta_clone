@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[ new create destroy ]
   resources :users, only: %i[ new create show edit update]
   resources :favorites, only: %i[ index create destroy ]
-  mount LetterOpenerWeb::Engine, at: "/inbox" if Rails.env.development?
+  # mount LetterOpenerWeb::Engine, at: "/inbox" if Rails.env.development?
 end

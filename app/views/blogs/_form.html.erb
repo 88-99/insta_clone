@@ -15,12 +15,14 @@
     <% end %>
     <%= form.label :image %>
     <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div>
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.text_field :content %>
   </div>
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+<%= link_to "Homeへ戻る", blogs_path %>
